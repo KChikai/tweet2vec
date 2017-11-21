@@ -1,0 +1,12 @@
+*.pyc
+.idea
+.python-version
+
+data/
+model/
+logs/
+result/
+tweet_encoding/
+gpig_views/
+hyperparams/
+report/
