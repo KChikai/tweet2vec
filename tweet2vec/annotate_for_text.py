@@ -82,21 +82,17 @@ def annotate_s2s_text():
             Xc_cmnt = m.group(3).replace(' ', '')       # 半角スペースの除去(tweet2vecに入力するため)
             Xt.append(Xc_cmnt[:MAX_LENGTH])
 
-    out_data = []
     out_pred = []
-    out_emb = []
     numbatches = len(Xt) / N_BATCH + 1
+    print 'number of batches', numbatches
     for i in range(numbatches):
         xr = Xt[N_BATCH*i:N_BATCH*(i+1)]
         x, x_m = batch.prepare_data(xr, chardict, n_chars=n_char)
         p = predict(x, x_m)
-        e = encode(x, x_m)
         ranks = np.argsort(p)[:, ::-1]
 
         for idx, item in enumerate(xr):
-            out_data.append(item)
             out_pred.append([inverse_labeldict[r] if r in inverse_labeldict else 'UNK' for r in ranks[idx, :5]][0])
-            out_emb.append(e[idx, :])
 
         print i, 'batches end...'
 
