@@ -1,3 +1,5 @@
+# coding: UTF-8
+
 import numpy as np
 import lasagne
 import theano
@@ -32,6 +34,12 @@ def main(args):
     data_path = args[0]
     model_path = args[1]
     save_path = args[2]
+
+    # シェルスクリプト使わない場合
+    # data_path = "../data/encoder_example.txt"
+    # model_path = "model/tweet2vec/"
+    # save_path = "tweet_encoding"
+
     if len(args)>3:
         m_num = int(args[3])
 

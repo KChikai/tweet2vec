@@ -73,7 +73,7 @@ def predict():
         if Xc == 'exit':
             print "See you again!"
             break
-
+        Xc = Xc.decode('utf-8')
         Xt.append(Xc[:MAX_LENGTH])
         out_data = []
         out_pred = []
